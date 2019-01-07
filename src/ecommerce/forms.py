@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 
+
 class ContactForm(forms.Form):
     fullname = forms.CharField(
                         widget=forms.TextInput(
@@ -33,18 +34,58 @@ class ContactForm(forms.Form):
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField()
-    password = forms.CharField( widget=forms.PasswordInput())
+    username = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "id": "fullname",
+                "class": "form-control",
+                "placeholder": "you full name"
+            })
+    )
+    password = forms.CharField(
+                widget=forms.PasswordInput(
+                    attrs={
+                        "id": "fullname",
+                        "class": "form-control",
+                        "placeholder": "you full name"
+                    }
+                ))
 
 
 User = get_user_model()
 
 
 class RegisterForm(forms.Form):
-    username = forms.CharField()
-    email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput())
-    password2 = forms.CharField(widget=forms.PasswordInput())
+    username = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "id": "fullname",
+                "class": "form-control",
+                "placeholder": "you full name"
+            })
+    )
+    email = forms.EmailField(
+        widget=forms.EmailInput(
+            attrs={
+                "id": "Email",
+                "class": "form-control",
+                "placeholder": "Enter Email"
+            })
+    )
+    password = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+            "id": "Email",
+            "class": "form-control",
+            "placeholder": "Enter Email"
+        }
+    ))
+    password2 = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+            "id": "Email",
+            "class": "form-control",
+            "placeholder": "Enter Email"
+        }
+    ))
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
